@@ -97,7 +97,7 @@ print("train y",trainY)
 
 opt = SGD(lr=0.01, momentum=0.9, nesterov=True)
 
-model = MiniVGGNet.build(width=32, height=32, depth=3, classes=2)
+model = MiniVGGNet.build(width=224, height=224, depth=3, classes=2)
 
 # model.fit_generator(datagen.flow(trainX, trainY, batch_size=32),
 #                     steps_per_epoch=len(trainX) / 32, epochs=epochs)
