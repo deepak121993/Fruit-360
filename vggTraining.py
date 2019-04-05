@@ -44,10 +44,12 @@ sp = SimplePreprocessor(32,32)
 iap = ImageToArrayProcessor()
 
 sdl = SimpleDatasetLoader(preprocessor=[sp,iap])
-(data,label) =sdl.load(imagesPaths,verbose=500)
+(data,label) =sdl.load(imagePaths,verbose=500)
 
 le = LabelEncoder()
 labels = le.fit_transform(label)
+
+print("labels ",labels)
 
 data = data.astype("float32")/255.0
 
