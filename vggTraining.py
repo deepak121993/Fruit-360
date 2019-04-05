@@ -40,7 +40,7 @@ imagePaths = np.array(list(paths.list_images(args["dataset"])))
 
 
 
-sp = SimplePreprocessor(64,64)
+sp = SimplePreprocessor(224,224)
 iap = ImageToArrayProcessor()
 
 sdl = SimpleDatasetLoader(preprocessor=[sp,iap])
