@@ -36,7 +36,7 @@ classLabels = ["damaged","undamaged"]
 
 print("going to load images")
 imagePaths = np.array(list(paths.list_images(args["dataset"])))
-print("Image paths ",imagePaths)
+
 
 
 
@@ -64,6 +64,11 @@ datagen = ImageDataGenerator(
 
 (trainX,testX,trainY,testY) = train_test_split(data,labels,test_size=0.25,random_state=40)
 
+trainY = lb.fit_transform(trainY)
+testY = lb.transform(testY)
+
+
+print("train y",trainY)
 # train_datagen = ImageDataGenerator(
 #         rescale=1./255,
 #         shear_range=0.2,
@@ -86,7 +91,7 @@ datagen = ImageDataGenerator(
 
 #callbacks =[LearningRateScheduler(step_decay)]
 
-datagen.fit(trainX)
+#datagen.fit(trainX)
 
 
 
