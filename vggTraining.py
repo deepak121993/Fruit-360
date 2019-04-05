@@ -19,6 +19,9 @@ import numpy as np
 import argparse
 import cv2
 from keras.utils import to_categorical
+import matplotlib
+
+matplotlib.use("Agg")
 
 
 
