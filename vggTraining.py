@@ -18,6 +18,7 @@ from imutils import paths
 import numpy as np
 import argparse
 import cv2
+import keras.utils.to_categorical
 
 
 
@@ -67,9 +68,6 @@ datagen = ImageDataGenerator(
 # trainY = lb.fit_transform(trainY)
 # testY = lb.transform(testY)
 
-
-print("train y",trainY)
-print("testy",testY)
 # train_datagen = ImageDataGenerator(
 #         rescale=1./255,
 #         shear_range=0.2,
@@ -95,6 +93,11 @@ print("testy",testY)
 #datagen.fit(trainX)
 
 
+trainY = to_categorical(trainY)
+testY = to_categorical(testY)
+
+print("train y",trainY)
+print("testy",testY)
 
 opt = SGD(lr=0.01, momentum=0.9, nesterov=True)
 
@@ -108,8 +111,8 @@ model.compile(loss="categorical_crossentropy", optimizer=opt,
     metrics=["accuracy"])
 
 print("[INFO] training the network...")
-print("trainX ",trainX )
-H = model.fit(trainX, trainY, validation_data=(testX, testY), batch_size=64,
+print("trainX ",trainX.shape )
+H = model.fit(trainX, trainY, validation_data=(testX, testY), batch_size=10,\
     epochs=20, verbose=1)
 
 print("[INFO] evaluating network...")
