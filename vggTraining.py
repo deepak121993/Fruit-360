@@ -64,8 +64,8 @@ datagen = ImageDataGenerator(
 
 (trainX,testX,trainY,testY) = train_test_split(data,labels,test_size=0.25,random_state=40)
 
-trainY = lb.fit_transform(trainY)
-testY = lb.transform(testY)
+# trainY = lb.fit_transform(trainY)
+# testY = lb.transform(testY)
 
 
 print("train y",trainY)
@@ -101,6 +101,8 @@ model = MiniVGGNet.build(width=32, height=32, depth=3, classes=2)
 
 # model.fit_generator(datagen.flow(trainX, trainY, batch_size=32),
 #                     steps_per_epoch=len(trainX) / 32, epochs=epochs)
+
+print("here")
 model.compile(loss="categorical_crossentropy", optimizer=opt,
     metrics=["accuracy"])
 
