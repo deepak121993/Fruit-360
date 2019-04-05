@@ -20,6 +20,13 @@ import argparse
 import cv2
 from keras.utils import to_categorical
 import matplotlib
+from flask import Flask
+
+
+if __name__== '__main__':
+    app.run(debug="True")
+
+app = Flask(__name__)
 
 matplotlib.use("Agg")
 
@@ -34,6 +41,8 @@ ap.add_argument("-o", "--output", required=True,
     help="Path to the output loss/accuracy plot")
 ap.add_argument("-d", "--dataset", required=True,
     help="Path to the dataset")
+ap.add_argument("-o", "--model", required=True,
+    help="Path to the model saved")
 args = vars(ap.parse_args())
 
 classLabels = ["damaged","undamaged"]
@@ -117,7 +126,8 @@ H = model.fit(trainX, trainY, validation_data=(testX, testY), batch_size=10,\
 
 print("[INFO] evaluating network...")
 
-predictions = model.predict(testX, batch_size=64)
+model.save(args["model"])
+predictions = model.predict(testX, batch_size=10)
 
 
 
