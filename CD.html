@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Crash Detection</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-info bg-info">
+        <h2 class="navbar-brand text-white">Crash Detection</h2>
+    </nav>
+    <div class="row p-5 m-5">
+        <div class="col pt-5 d-flex justify-content-center">
+            <div class="card bg-light" style="width:800px;">
+                <div class="card-header">
+                    Enter Image for Detection
+                </div>
+                <div class="card-body ">
+                    <div class="input-group py-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01" onclick="myFunction()">Predict</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="myFile"
+                                aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer pt-0">
+                    <p class="py-3" id="demo"></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <nav class="navbar fixed-bottom navbar-info bg-info d-flex justify-content-center py-0" style="height:10px;">
+        <p class="navbar-brand mt-2 ">&nbsp;</p>
+    </nav>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myFile");
+            var txt = "";
+            if ('files' in x) {
+                if (x.files.length == 0) {
+                    txt = "Select one or more files.";
+                } else {
+                    for (var i = 0; i < x.files.length; i++) {
+                        txt += "<br><strong>" + (i + 1) + ". file</strong><br>";
+                        var file = x.files[i];
+                        if ('name' in file) {
+                            txt += "Name: " + file.name + "<br>";
+                        }
+                        if ('size' in file) {
+                            txt += "Size: " + file.size + " bytes <br>";
+                        }
+                    }
+                }
+            }
+            else {
+                if (x.value == "") {
+                    txt += "Select one or more files.";
+                } else {
+                    txt += "The files property is not supported by your browser!";
+                    txt += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
+                }
+            }
+            document.getElementById("demo").innerHTML = txt;
+        }
+    </script>
+</body>
+
+</html>

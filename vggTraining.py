@@ -53,7 +53,6 @@ sdl = SimpleDatasetLoader(preprocessor=[sp,iap])
 le = LabelEncoder()
 labels = le.fit_transform(label)
 
-print("labels ",labels)
 
 data = data.astype("float32")/255.0
 
@@ -99,8 +98,6 @@ datagen = ImageDataGenerator(
 trainY = to_categorical(trainY)
 testY = to_categorical(testY)
 
-print("train y",trainY)
-print("testy",testY)
 
 opt = SGD(lr=0.01, momentum=0.9, nesterov=True)
 
