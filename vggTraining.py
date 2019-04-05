@@ -20,6 +20,7 @@ import argparse
 import cv2
 from keras.utils import to_categorical
 import matplotlib
+from keras.callbacks import ModelCheckpoint 
 from flask import Flask
 # app = Flask(__name__)
 
@@ -118,11 +119,12 @@ model = MiniVGGNet.build(width=224, height=224, depth=3, classes=2)
 print("here")
 model.compile(loss="categorical_crossentropy", optimizer=opt,
     metrics=["accuracy"])
+checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 
 print("[INFO] training the network...")
 print("trainX ",trainX.shape )
 H = model.fit(trainX, trainY, validation_data=(testX, testY), batch_size=10,\
-    epochs=10, verbose=1)
+    epochs=10, verbose=1,callbacks=checkpoint)
 
 print("[INFO] evaluating network...")
 
