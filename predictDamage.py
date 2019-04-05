@@ -15,7 +15,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/",methods=["POST","GET"])
+@app.route("/predict/",methods=["POST"])
 def predictImage(imgPath):
     print("test")
     PredictDamage.predict(img)
