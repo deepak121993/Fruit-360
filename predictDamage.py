@@ -27,8 +27,8 @@ class PredictDamage:
     def predict(imgPath):
         #load the pretrained model
         print("[INFO] loading thr pretrained model")
-        model = load_model("models/")
-
+        model = load_model("models/train.hdf5")
+        print("[INFO] loaded thr pretrained model")
         sp = SimplePreprocessor(224,224)
         iap = ImageToArrayProcessor()
 
@@ -37,7 +37,7 @@ class PredictDamage:
 
         le = LabelEncoder()
         labels = le.fit_transform(label)
-
+        print("[INFo] data ",data)
 
         data = data.astype("float32")/255.0
         prediction = model.predict(data)

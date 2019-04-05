@@ -41,7 +41,7 @@ ap.add_argument("-o", "--output", required=True,
     help="Path to the output loss/accuracy plot")
 ap.add_argument("-d", "--dataset", required=True,
     help="Path to the dataset")
-ap.add_argument("-o", "--model", required=True,
+ap.add_argument("-m", "--model", required=True,
     help="Path to the model saved")
 args = vars(ap.parse_args())
 
