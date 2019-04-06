@@ -126,7 +126,7 @@ checkpoint = ModelCheckpoint(args["model"], monitor='val_acc', verbose=1, save_b
 print("[INFO] training the network...")
 print("trainX ",trainX.shape )
 H = model.fit(trainX, trainY, validation_data=(testX, testY), batch_size=10,\
-    epochs=1, verbose=1,callbacks=[checkpoint])
+    epochs=10, verbose=1,callbacks=[checkpoint])
 
 print("[INFO] evaluating network...")
 
@@ -137,10 +137,10 @@ predictions = model.predict(testX, batch_size=10)
 
 plt.style.use("ggplot")
 plt.figure()
-plt.plot(np.arange(0, 20), H.history["loss"], label="train_loss")
-plt.plot(np.arange(0, 20), H.history["val_loss"], label="val_loss")
-plt.plot(np.arange(0, 20), H.history["acc"], label="train_acc")
-plt.plot(np.arange(0, 20), H.history["val_acc"], label="val_acc")
+plt.plot(np.arange(0, 10), H.history["loss"], label="train_loss")
+plt.plot(np.arange(0, 10), H.history["val_loss"], label="val_loss")
+plt.plot(np.arange(0, 10), H.history["acc"], label="train_acc")
+plt.plot(np.arange(0, 10), H.history["val_acc"], label="val_acc")
 plt.title("Training Loss and Accuracy on CIFAr-10")
 plt.xlabel("Epoch #")
 plt.ylabel("Loss/Accuracy")
