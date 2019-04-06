@@ -121,12 +121,12 @@ model.compile(loss="categorical_crossentropy", optimizer=opt,
     metrics=["accuracy"])
 
 
-checkpoint = ModelCheckpoint(args["model"], monitor='val_acc', verbose=1, save_best_only=True)
+checkpoint = ModelCheckpoint(args["model"], monitor='val_acc', verbose=1, save_best_only=True,save_weights_only=True)
 
 print("[INFO] training the network...")
 print("trainX ",trainX.shape )
 H = model.fit(trainX, trainY, validation_data=(testX, testY), batch_size=10,\
-    epochs=10, verbose=1,callbacks=[checkpoint])
+    epochs=5, verbose=1,callbacks=[checkpoint])
 
 print("[INFO] evaluating network...")
 
