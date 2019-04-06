@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -45,10 +46,26 @@
     </nav>
 
     <script>
+	$("inputGroupFileAddon01").click(function(){
+  $.post("http://localhost:5000/predict/",
+  {
+    imgPath:"F:\hack\dataset\Accident\damaged\b3.jpg"
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+})
+
+	
         function myFunction() {
             var x = document.getElementById("myFile");
             var txt = "";
             if ('files' in x) {
+				
+				$.ajax({url: "demo_test.txt", success: function(result){
+    $("#div1").html(result);
+  }});
+			
                 if (x.files.length == 0) {
                     txt = "Select one or more files.";
                 } else {

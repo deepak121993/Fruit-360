@@ -126,7 +126,7 @@ checkpoint = ModelCheckpoint(args["model"], monitor='val_acc', verbose=1, save_b
 print("[INFO] training the network...")
 print("trainX ",trainX.shape )
 H = model.fit(trainX, trainY, validation_data=(testX, testY), batch_size=10,\
-    epochs=5, verbose=1,callbacks=[checkpoint])
+    epochs=1, verbose=1,callbacks=[checkpoint])
 
 print("[INFO] evaluating network...")
 
